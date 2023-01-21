@@ -1,69 +1,74 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
+
+import 'dart:developer';
 
 import 'package:cadastro_contatos/src/app_widget.dart';
+import 'package:cadastro_contatos/src/database/sqlite/connection.dart';
+import 'package:cadastro_contatos/src/database/sqlite/dao/contact_dao_impl.dart';
+import 'package:cadastro_contatos/src/database/sqlite/script.dart';
+import 'package:cadastro_contatos/src/domain/entities/Contact.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 
 class ContactList extends StatelessWidget {
-  final lista = [
-    {
-      'nome': 'Pietro',
-      'telefone': '(11)965478954',
-      'avatar':
-          'https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916__340.png'
-    },
-    {
-      'nome': 'Ana',
-      'telefone': '(11)978944567',
-      'avatar':
-          'https://cdn.pixabay.com/photo/2014/04/03/10/32/user-310807__340.png'
-    },
-    {
-      'nome': 'Bia',
-      'telefone': '(11)987456123',
-      'avatar':
-          'https://cdn.pixabay.com/photo/2022/12/17/14/21/woman-7661776__340.png'
-    },
-  ];
+  // Método privado usando "_" para buscar consultas no banco
+  // Lista de Maps<que toda chave é uma String e os valores são dinâmicos>
+  // Future, para funções assíncronas que futuramente irá retornar o valor
+  Future<List<Contact>> _buscarDados() async {
+    return ContactDAOImpl().find();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Lista de contatos'),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(MyApp.HOME);
-              },
-              icon: Icon(Icons.add))
-        ],
-      ),
-      body: ListView.builder(
-        // A lista passa por todos os indices do arrar, armazenando seu indice no index
-        itemBuilder: (context, index) {
-          var contato = lista[index];
-          var avatar = CircleAvatar(
-            backgroundImage: NetworkImage(contato['avatar']!),
-          );
-          return ListTile(
-            leading: avatar,
-            title: Text(contato['nome']!),
-            subtitle: Text(contato['telefone']!),
-            trailing: Container(
-              width: 100,
-              child: Row(
-                children: [
-                  IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
-                  IconButton(onPressed: () {}, icon: Icon(Icons.delete))
+    return FutureBuilder(
+        future: _buscarDados(),
+        builder: (context, futuro) {
+          if (futuro.hasData) {
+            List<Contact>? lista = futuro.data;
+            return Scaffold(
+              appBar: AppBar(
+                title: Text('Lista de contatos'),
+                actions: [
+                  IconButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(MyApp.HOME);
+                      },
+                      icon: Icon(Icons.add))
                 ],
               ),
-            ),
-          );
-        },
-        itemCount: lista.length,
-      ),
-    );
+              body: ListView.builder(
+                // A lista passa por todos os indices do arrar, armazenando seu indice no index
+                itemBuilder: (context, index) {
+                  var contato = lista?[index];
+                  var avatar = CircleAvatar(
+                    backgroundImage: NetworkImage(contato!.urlAvatar!),
+                  );
+                  return ListTile(
+                    leading: avatar,
+                    title: Text(contato.nome!),
+                    subtitle: Text(contato.telefone!),
+                    trailing: SizedBox(
+                      width: 100,
+                      child: Row(
+                        children: [
+                          IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
+                          IconButton(onPressed: () {}, icon: Icon(Icons.delete))
+                        ],
+                      ),
+                    ),
+                  );
+                },
+                itemCount: lista!.length,
+              ),
+            );
+          } else {
+            return Scaffold(
+              body: Text('Sem dados'),
+            );
+          }
+        });
   }
 }

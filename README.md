@@ -1,17 +1,40 @@
 # cadastro_contatos
 
-A new Flutter project.
+<!---Esses são exemplos. Veja https://shields.io para outras pessoas ou para personalizar este conjunto de escudos. Você pode querer incluir dependências, status do projeto e informações de licença aqui--->
 
-## Getting Started
+<img src="exemplo-image.png" alt="exemplo imagem">
 
-This project is a starting point for a Flutter application.
+> Linha adicional de texto informativo sobre o que o projeto faz. Sua introdução deve ter cerca de 2 ou 3 linhas. Não exagere, as pessoas não vão ler.
 
-A few resources to get you started if this is your first Flutter project:
+### Ajustes e melhorias
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# curso-flutter
+Cadastro Contatos
+- [x] Criar interface
+- [] Adicionar contato
+- [] Excluir contato
+
+Listar Contatos
+- [x] Criar interface de contatos
+- [] Listar contatos cadastros
+
+Banco de Contatos
+- [x] Criar banco
+- [x] Criar tabela
+- [x] Inserir dados na tabela
+- [] Integrar com aplicativo
+
+## 💻 Pré-requisitos
+
+Antes de começar, verifique se você atendeu aos seguintes requisitos:
+
+<!---Estes são apenas requisitos de exemplo. Adicionar, duplicar ou remover conforme necessário--->
+
+- Você instalou a versão mais recente de `<linguagem / dependência / requeridos>`
+- Você tem uma máquina `<Windows / Linux / Mac>`. Indique qual sistema operacional é compatível / não compatível.
+- Você leu `<guia / link / documentação_relacionada_ao_projeto>`.
+
+<!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->
+
+[⬆ Voltar ao topo](#cadastro_contatos)<br>
