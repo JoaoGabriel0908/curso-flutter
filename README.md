@@ -15,11 +15,11 @@ Regra de negócio
 - [ ] Excluir contatos
 - [ ] Ver detalhes dos contatos
 - [ ] Listar contatos cadastros
+- [ ] Integrar com aplicativo
 
 Banco de Contatos
 - [x] Criar banco
 - [x] Criar tabela
 - [x] Inserir dados na tabela
-- [ ] Integrar com aplicativo
 
 [⬆ Voltar ao topo](#cadastro_contatos)<br>
