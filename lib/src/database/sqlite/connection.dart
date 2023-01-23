@@ -18,6 +18,7 @@ class Connection {
       // Join(Plugin do Path) junta nos parametros o que vai ser o caminho da plataforma ou banco
       // GetDatabase função do SQFLite que traz o caminho onde o banco será criado
       var path = join(await getDatabasesPath(), 'banco');
+      // deleteDatabase(path);
       // Abertura do banco de dados
       // OnCreate verifica se tem algo no banco, se não tiver ele cria
       // Conforme tiver alterações no banco, use o onUpgrade e altere a versão
