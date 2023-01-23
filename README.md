@@ -12,10 +12,9 @@ Regra de negócio
 - [x] Criar interface
 - [x] Criar interface de contatos
 - [ ] Adicionar contato
-- [ ] Excluir contatos
+- [X] Excluir contatos
 - [ ] Ver detalhes dos contatos
-- [ ] Listar contatos cadastros
-- [ ] Integrar com aplicativo
+- [X] Listar contatos cadastros
 
 Banco de Contatos
 - [x] Criar banco
